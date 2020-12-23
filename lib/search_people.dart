@@ -71,7 +71,6 @@ class SearchPersonPageState extends State<SearchPersonPage> {
       ),
       body: Stack(children: [
         Container(
-          decoration: BoxDecoration(color: Color(0xFFe5e5e5)),
           padding: EdgeInsets.only(left: 0, right: 0, bottom: 0),
           child: CustomScrollView(slivers: [
             SliverToBoxAdapter(
