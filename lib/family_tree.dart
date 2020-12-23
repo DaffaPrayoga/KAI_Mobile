@@ -2,6 +2,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:kai_mobile/components/nineBoxCard.dart';
 import 'package:kai_mobile/components/positionExpandCard.dart';
+import 'package:kai_mobile/position_description.dart';
 import 'package:kai_mobile/search_people.dart';
 import 'components/const.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -95,7 +96,8 @@ class FamilyTreePageState extends State<FamilyTreePage> {
                             )),
                         Positioned(
                             top: MediaQuery.of(context).size.height *
-                                    -0.392275862068966 + 140,
+                                    -0.392275862068966 +
+                                140,
                             left: MediaQuery.of(context).size.width * 0.23,
                             child: Transform.scale(
                               scale: 4,
@@ -112,7 +114,9 @@ class FamilyTreePageState extends State<FamilyTreePage> {
                             )),
                         Positioned(
                             top: MediaQuery.of(context).size.height *
-                                    -0.392275862068966 + 140 + 140,
+                                    -0.392275862068966 +
+                                140 +
+                                140,
                             left: MediaQuery.of(context).size.width * 0.23,
                             child: Transform.scale(
                               scale: 4,
@@ -211,9 +215,7 @@ class FamilyTreePageState extends State<FamilyTreePage> {
                                 Container(
                                   width:
                                       MediaQuery.of(context).size.width / 3.6,
-                                  child: Column(children: [
-                                    
-                                  ]),
+                                  child: Column(children: []),
                                 ),
                                 Container(
                                   width:
@@ -329,6 +331,11 @@ class FamilyTreePageState extends State<FamilyTreePage> {
 
   GestureDetector peopleData() {
     return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return PositionDescriptionPage();
+        }));
+      },
       child: Container(
         child: Column(children: [
           CircleAvatar(
