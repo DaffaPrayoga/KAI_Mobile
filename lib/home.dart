@@ -108,7 +108,7 @@ class myHomePageState extends State<myHomePage> {
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return familyTreePage();
+                        return FamilyTreePage();
                       }));
                     },
                     child: Container(

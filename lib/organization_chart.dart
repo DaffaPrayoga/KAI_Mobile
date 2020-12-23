@@ -85,7 +85,7 @@ class organizationChartPageState extends State<organizationChartPage> {
                               ),
                               Container(
                                 width: MediaQuery.of(context).size.width / 3.6,
-                                margin: const EdgeInsets.only(bottom: 5),
+                                margin: const EdgeInsets.only(bottom: 0),
                                 child: Column(
                                   children: [
                                     OutlineButton(

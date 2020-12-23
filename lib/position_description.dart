@@ -5,6 +5,7 @@ import 'package:kai_mobile/components/nineBoxCard.dart';
 import 'package:kai_mobile/components/searchListItem.dart';
 import 'package:kai_mobile/components/successorListItem.dart';
 import 'package:kai_mobile/family_tree.dart';
+import 'package:kai_mobile/log_activity.dart';
 import 'package:kai_mobile/organization_chart.dart';
 import 'components/const.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -20,12 +21,9 @@ class PositionDescriptionPage extends StatefulWidget {
   PositionDescriptionPageState createState() => PositionDescriptionPageState();
 }
 
-enum SearchBy { people, structure }
-
 class PositionDescriptionPageState extends State<PositionDescriptionPage> {
   @override
   Widget build(BuildContext context) {
-    SearchBy _choosen = SearchBy.people;
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -77,7 +75,11 @@ class PositionDescriptionPageState extends State<PositionDescriptionPage> {
           ),
           actions: <Widget>[
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return LogActivityPage();
+                }));
+              },
               child: Container(
                 margin: const EdgeInsets.only(left: 10, right: 10),
                 child: SvgPicture.asset(
