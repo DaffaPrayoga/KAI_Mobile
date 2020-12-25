@@ -1,9 +1,11 @@
 import 'package:badges/badges.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:kai_mobile/add_option.dart';
 import 'package:kai_mobile/components/nineBoxCard.dart';
 import 'package:kai_mobile/components/searchListItem.dart';
 import 'package:kai_mobile/components/successorListItem.dart';
+import 'package:kai_mobile/detail_successor.dart';
 import 'package:kai_mobile/family_tree.dart';
 import 'package:kai_mobile/log_activity.dart';
 import 'package:kai_mobile/organization_chart.dart';
@@ -89,7 +91,13 @@ class PositionDescriptionPageState extends State<PositionDescriptionPage> {
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                return showDialog(
+
+                  context: context,
+                  builder: (BuildContext context) => AddOptionDialog(),
+                );
+              },
               child: Container(
                 margin: const EdgeInsets.only(left: 10, right: 10),
                 child: SvgPicture.asset(
@@ -296,232 +304,248 @@ class PositionDescriptionPageState extends State<PositionDescriptionPage> {
     );
   }
 
-  Container internalSuccessorCard() {
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.only(left: 20, right: 0, top: 15, bottom: 15),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 40,
-                height: 40,
-                child: CircleAvatar(
-                  backgroundImage:
-                      AssetImage('assets/images/profile_picture.jpg'),
+  GestureDetector internalSuccessorCard() {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return DetailSuccessorPage();
+        }));
+      },
+      child: Container(
+        width: double.infinity,
+        margin: const EdgeInsets.only(left: 20, right: 0, top: 15, bottom: 15),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 40,
+                  height: 40,
+                  child: CircleAvatar(
+                    backgroundImage:
+                        AssetImage('assets/images/profile_picture.jpg'),
+                  ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(left: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 5),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          'Daffa Prayoga',
-                          textAlign: TextAlign.left,
-                          style:
-                              TextStyle(fontSize: 15, color: Colors.grey[800]),
+                Container(
+                  margin: const EdgeInsets.only(left: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 5),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Daffa Prayoga',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontSize: 15, color: Colors.grey[800]),
+                          ),
                         ),
                       ),
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.only(
-                              left: 5, right: 5, top: 3, bottom: 3),
-                          child: Text(
-                            'Ready Now',
-                            style: TextStyle(color: Colors.white, fontSize: 10),
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.only(
+                                left: 5, right: 5, top: 3, bottom: 3),
+                            child: Text(
+                              'Ready Now',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 10),
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.green,
+                                borderRadius: BorderRadius.circular(3)),
                           ),
-                          decoration: BoxDecoration(
-                              color: Colors.green,
-                              borderRadius: BorderRadius.circular(3)),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 3, right: 3),
-                          child: SvgPicture.asset(
-                            'assets/images/female_pink.svg',
-                            height: 17,
+                          Container(
+                            margin: const EdgeInsets.only(left: 3, right: 3),
+                            child: SvgPicture.asset(
+                              'assets/images/female_pink.svg',
+                              height: 17,
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(left: 3, right: 3),
+                            child: SvgPicture.asset(
+                              'assets/images/smile_green.svg',
+                              height: 17,
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(left: 3, right: 3),
+                            child: SvgPicture.asset(
+                              'assets/images/puzzle_pink.svg',
+                              height: 17,
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(left: 3, right: 3),
+                            child: SvgPicture.asset(
+                              'assets/images/flag_yellow.svg',
+                              height: 17,
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(left: 3, right: 3),
+                            child: SvgPicture.asset(
+                              'assets/images/health_green.svg',
+                              height: 17,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            IconButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    child: new SimpleDialog(
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: () {},
+                          child: ListTile(
+                            title: new Text('View Family Tree'),
                           ),
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 3, right: 3),
-                          child: SvgPicture.asset(
-                            'assets/images/smile_green.svg',
-                            height: 17,
+                        GestureDetector(
+                          onTap: () {},
+                          child: ListTile(
+                            title: new Text('Evaluate Readiness'),
                           ),
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 3, right: 3),
-                          child: SvgPicture.asset(
-                            'assets/images/puzzle_pink.svg',
-                            height: 17,
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 3, right: 3),
-                          child: SvgPicture.asset(
-                            'assets/images/flag_yellow.svg',
-                            height: 17,
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 3, right: 3),
-                          child: SvgPicture.asset(
-                            'assets/images/health_green.svg',
-                            height: 17,
+                        GestureDetector(
+                          onTap: () {},
+                          child: ListTile(
+                            title: new Text(
+                              'Remove',
+                              style: TextStyle(color: Colors.red),
+                            ),
                           ),
                         ),
                       ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          IconButton(
-            onPressed: () {
-              showDialog(
-                  context: context,
-                  child: new SimpleDialog(
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {},
-                        child: ListTile(
-                          title: new Text('View Family Tree'),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: ListTile(
-                          title: new Text('Evaluate Readiness'),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: ListTile(
-                          title: new Text(
-                            'Remove',
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ));
-            },
-            icon: Icon(FontAwesomeIcons.ellipsisV,
-                color: Colors.grey[500], size: 20),
-          )
-        ],
+                    ));
+              },
+              icon: Icon(FontAwesomeIcons.ellipsisV,
+                  color: Colors.grey[500], size: 20),
+            )
+          ],
+        ),
       ),
     );
   }
 
-  Container externalSuccessorCard() {
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 15),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 40,
-                height: 40,
-                child: CircleAvatar(
-                  backgroundImage:
-                      AssetImage('assets/images/profile_picture.jpg'),
+  GestureDetector externalSuccessorCard() {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return DetailSuccessorPage();
+        }));
+      },
+      child: Container(
+        width: double.infinity,
+        margin: const EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 15),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 40,
+                  height: 40,
+                  child: CircleAvatar(
+                    backgroundImage:
+                        AssetImage('assets/images/profile_picture.jpg'),
+                  ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(left: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 5),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          'Daffa Prayoga',
-                          textAlign: TextAlign.left,
-                          style:
-                              TextStyle(fontSize: 15, color: Colors.grey[800]),
+                Container(
+                  margin: const EdgeInsets.only(left: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 5),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Daffa Prayoga',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontSize: 15, color: Colors.grey[800]),
+                          ),
                         ),
                       ),
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.only(
-                              left: 5, right: 5, top: 3, bottom: 3),
-                          child: Text(
-                            'Ready Now',
-                            style: TextStyle(color: Colors.white, fontSize: 10),
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.only(
+                                left: 5, right: 5, top: 3, bottom: 3),
+                            child: Text(
+                              'Ready Now',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 10),
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.green,
+                                borderRadius: BorderRadius.circular(3)),
                           ),
-                          decoration: BoxDecoration(
-                              color: Colors.green,
-                              borderRadius: BorderRadius.circular(3)),
+                          Container(
+                            padding: const EdgeInsets.only(
+                                left: 5, right: 5, top: 5, bottom: 3),
+                            child: Text(
+                              'Tokopedia',
+                              style: TextStyle(
+                                  color: Colors.grey[600], fontSize: 12),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            IconButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    child: new SimpleDialog(
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: () {},
+                          child: ListTile(
+                            title: new Text('View Family Tree'),
+                          ),
                         ),
-                        Container(
-                          padding: const EdgeInsets.only(
-                              left: 5, right: 5, top: 5, bottom: 3),
-                          child: Text(
-                            'Tokopedia',
-                            style: TextStyle(
-                                color: Colors.grey[600], fontSize: 12),
+                        GestureDetector(
+                          onTap: () {},
+                          child: ListTile(
+                            title: new Text('Evaluate Readiness'),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: ListTile(
+                            title: new Text(
+                              'Remove',
+                              style: TextStyle(color: Colors.red),
+                            ),
                           ),
                         ),
                       ],
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
-          IconButton(
-            onPressed: () {
-              showDialog(
-                  context: context,
-                  child: new SimpleDialog(
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {},
-                        child: ListTile(
-                          title: new Text('View Family Tree'),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: ListTile(
-                          title: new Text('Evaluate Readiness'),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: ListTile(
-                          title: new Text(
-                            'Remove',
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ));
-            },
-            icon: Icon(FontAwesomeIcons.ellipsisV,
-                color: Colors.grey[500], size: 20),
-          )
-        ],
+                    ));
+              },
+              icon: Icon(FontAwesomeIcons.ellipsisV,
+                  color: Colors.grey[500], size: 20),
+            )
+          ],
+        ),
       ),
     );
   }
