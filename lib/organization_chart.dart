@@ -2,6 +2,9 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:kai_mobile/components/nineBoxCard.dart';
 import 'package:kai_mobile/components/positionExpandCard.dart';
+import 'package:kai_mobile/display_info.dart';
+import 'package:kai_mobile/family_tree_info.dart';
+import 'package:kai_mobile/organization_chart_info.dart';
 import 'package:kai_mobile/search_people.dart';
 import 'components/const.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -137,7 +140,8 @@ class organizationChartPageState extends State<organizationChartPage> {
                               Container(
                                 width: MediaQuery.of(context).size.width / 3.6,
                                 child: Column(children: [
-                                  positionExpandCard('VP Human Capital', context),
+                                  positionExpandCard(
+                                      'VP Human Capital', context),
                                   Center(
                                     child: Container(
                                       width: 0.5,
@@ -158,7 +162,8 @@ class organizationChartPageState extends State<organizationChartPage> {
                           ),
                           Center(
                             child: Container(
-                              width: MediaQuery.of(context).size.width / 1.3846153846,
+                              width: MediaQuery.of(context).size.width /
+                                  1.3846153846,
                               height: 0.5,
                               margin: const EdgeInsets.only(top: 0, bottom: 0),
                               decoration: BoxDecoration(
@@ -185,7 +190,8 @@ class organizationChartPageState extends State<organizationChartPage> {
                                       ),
                                     ),
                                   ),
-                                  positionExpandCard('GM Corporate Culture', context),
+                                  positionExpandCard(
+                                      'GM Corporate Culture', context),
                                 ]),
                               ),
                               Container(
@@ -203,7 +209,8 @@ class organizationChartPageState extends State<organizationChartPage> {
                                       ),
                                     ),
                                   ),
-                                  positionExpandCard('GM Human Capital Dev', context),
+                                  positionExpandCard(
+                                      'GM Human Capital Dev', context),
                                 ]),
                               ),
                               Container(
@@ -249,14 +256,24 @@ class organizationChartPageState extends State<organizationChartPage> {
                         size: 20,
                         color: Colors.grey[700],
                       ),
-                      onPressed: () {}),
+                      onPressed: () {
+                        return showDialog(
+                          context: context,
+                          builder: (BuildContext context) => OrgChartInfoDialog(),
+                        );
+                      }),
                   IconButton(
                       icon: Icon(
                         FontAwesomeIcons.eye,
                         size: 20,
                         color: Colors.grey[700],
                       ),
-                      onPressed: () {}),
+                      onPressed: () {
+                        return showDialog(
+                          context: context,
+                          builder: (BuildContext context) => DisplayInfoDialog(),
+                        );
+                      }),
                 ],
               )),
         )

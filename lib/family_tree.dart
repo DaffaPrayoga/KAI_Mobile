@@ -2,6 +2,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:kai_mobile/components/nineBoxCard.dart';
 import 'package:kai_mobile/components/positionExpandCard.dart';
+import 'package:kai_mobile/family_tree_info.dart';
 import 'package:kai_mobile/position_description.dart';
 import 'package:kai_mobile/search_people.dart';
 import 'components/const.dart';
@@ -146,7 +147,7 @@ class FamilyTreePageState extends State<FamilyTreePage> {
                                   margin: const EdgeInsets.only(bottom: 0),
                                   child: Column(
                                     children: [
-                                      peopleData(),
+                                      peopleData("white"),
                                     ],
                                   ),
                                 ),
@@ -175,7 +176,7 @@ class FamilyTreePageState extends State<FamilyTreePage> {
                                   width:
                                       MediaQuery.of(context).size.width / 3.6,
                                   child: Column(children: [
-                                    peopleData(),
+                                    peopleData("yellow"),
                                   ]),
                                 ),
                                 Container(
@@ -184,7 +185,7 @@ class FamilyTreePageState extends State<FamilyTreePage> {
                                   child: Column(children: [
                                     Padding(
                                       padding: const EdgeInsets.only(top: 20),
-                                      child: peopleData(),
+                                      child: peopleData("green"),
                                     ),
                                   ]),
                                 ),
@@ -192,7 +193,7 @@ class FamilyTreePageState extends State<FamilyTreePage> {
                                   width:
                                       MediaQuery.of(context).size.width / 3.6,
                                   child: Column(children: [
-                                    peopleData(),
+                                    peopleData("green"),
                                   ]),
                                 ),
                               ],
@@ -223,7 +224,7 @@ class FamilyTreePageState extends State<FamilyTreePage> {
                                   child: Column(children: [
                                     Padding(
                                       padding: const EdgeInsets.only(top: 20),
-                                      child: peopleData(),
+                                      child: peopleData("yellow"),
                                     ),
                                   ]),
                                 ),
@@ -231,7 +232,7 @@ class FamilyTreePageState extends State<FamilyTreePage> {
                                   width:
                                       MediaQuery.of(context).size.width / 3.6,
                                   child: Column(children: [
-                                    peopleData(),
+                                    peopleData("pink"),
                                   ]),
                                 ),
                               ],
@@ -264,7 +265,7 @@ class FamilyTreePageState extends State<FamilyTreePage> {
                                   child: Column(children: [
                                     Padding(
                                       padding: const EdgeInsets.only(top: 20),
-                                      child: peopleData(),
+                                      child: peopleData("pink"),
                                     ),
                                   ]),
                                 ),
@@ -299,7 +300,13 @@ class FamilyTreePageState extends State<FamilyTreePage> {
                         size: 20,
                         color: Colors.grey[700],
                       ),
-                      onPressed: () {}),
+                      onPressed: () {
+                        return showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              FamilyTreeInfoDialog(),
+                        );
+                      }),
                   GestureDetector(
                     onTap: () {},
                     child: Container(
@@ -329,7 +336,7 @@ class FamilyTreePageState extends State<FamilyTreePage> {
     );
   }
 
-  GestureDetector peopleData() {
+  GestureDetector peopleData(String color) {
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -338,8 +345,25 @@ class FamilyTreePageState extends State<FamilyTreePage> {
       },
       child: Container(
         child: Column(children: [
-          CircleAvatar(
-            backgroundImage: AssetImage('assets/images/profile_picture.jpg'),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                  width: 3,
+                  color: (color == "white")
+                      ? Colors.white
+                      : (color == "green")
+                          ? Colors.green
+                          : (color == "yellow")
+                              ? Colors.yellow
+                              : (color == "pink")
+                                  ? Colors.pink
+                                  : Colors.white),
+              borderRadius: BorderRadius.circular(200),
+              color: Colors.white,
+            ),
+            child: CircleAvatar(
+              backgroundImage: AssetImage('assets/images/profile_picture.jpg'),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 5),

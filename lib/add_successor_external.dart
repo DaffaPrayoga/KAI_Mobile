@@ -117,6 +117,39 @@ class AddSuccessorExternalPageState extends State<AddSuccessorExternalPage> {
                         ),
                       ),
                     ),
+                    Center(
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 20, bottom: 20),
+                        child: SizedBox(
+                            width: 120,
+                            height: 120,
+                            child: Stack(children: [
+                              CircleAvatar(
+                                radius: 120,
+                                backgroundImage: AssetImage(
+                                    "assets/images/profile_picture.jpg"),
+                                backgroundColor: Color(0xFFEEE),
+                              ),
+                              Positioned(
+                                // right: 0,
+                                child: Container(
+                                  width: 30,
+                                  height: 30,
+                                  child: FloatingActionButton(
+                                    onPressed: () {},
+                                    child: Icon(
+                                      Icons.add_a_photo,
+                                      size: 16,
+                                      color: Colors.white,
+                                    ),
+                                    backgroundColor: secondaryColor,
+                                    elevation: 10,
+                                  ),
+                                ),
+                              )
+                            ])),
+                      ),
+                    ),
                     Container(
                       margin:
                           const EdgeInsets.only(left: 5.0, right: 5.0, top: 20),
@@ -262,8 +295,8 @@ class AddSuccessorExternalPageState extends State<AddSuccessorExternalPage> {
                       ),
                     ),
                     Container(
-                      margin:
-                          const EdgeInsets.only(left: 5.0, right: 5.0, top: 20,bottom: 150),
+                      margin: const EdgeInsets.only(
+                          left: 5.0, right: 5.0, top: 20, bottom: 150),
                       child: TextField(
                         autofocus: false,
                         maxLines: 4,
